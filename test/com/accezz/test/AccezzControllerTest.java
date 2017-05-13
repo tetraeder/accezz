@@ -10,7 +10,7 @@ import com.accezz.main.utils.AccezzCLI;
 
 public class AccezzControllerTest {
 
-	private static final String PATH = "C:\\Users\\Salner\\GadWorkspace\\Accezz\\test\\resources\\";
+	private static final String PATH = "C:\\Devhome\\Accezz\\Accezz\\test\\resources\\";
 
 	@Before
 	public void initDB() {
