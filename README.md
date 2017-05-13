@@ -37,7 +37,8 @@ services.json - Service configuration
 
 ## Configuration: 
 
-config.json - 
+#### config.json -
+
   "servicesFile" - services file location 
   
   "logFile" - log file location
@@ -48,7 +49,8 @@ config.json -
   
   "smtp" - mail configuration
   
-services.json - for each command: 
+  
+#### services.json - for each command: 
 
   "serviceUrl" - future usage for micro services
   
