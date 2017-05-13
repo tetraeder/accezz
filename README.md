@@ -45,6 +45,8 @@ services.json - Service configuration
   
   "database" - db file location
   
+  "curlPath" - path to curl.exe 
+  
   "rolloutAfter" - log rollout to next file after X commands
   
   "smtp" - mail configuration
