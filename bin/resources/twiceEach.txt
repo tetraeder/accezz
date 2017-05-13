@@ -1,0 +1,6 @@
+http -u www.ynet.co.il
+http -u www.nrg.co.il
+https -u www.ynet.co.il
+https -u www.nrg.co.il
+dns -u www.ynet.co.il
+dns -u www.nrg.co.il

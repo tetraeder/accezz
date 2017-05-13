@@ -1,0 +1,9 @@
+dnec -u www.ynet.co.il
+dnc -u www.ynet@co.il
+dnc -u www.ynet.co.il
+http -u www.ynet.co.il
+http -u www.ynet@co.il
+http -u www.ynet.co.il
+https -u www.ynet.co.il
+https -u www.ynet@co.il
+https -u www.ynet.co.il

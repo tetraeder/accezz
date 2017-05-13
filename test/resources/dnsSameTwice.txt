@@ -1,0 +1,2 @@
+dns -u www.ynet.co.il
+dns -u www.ynet.co.il
