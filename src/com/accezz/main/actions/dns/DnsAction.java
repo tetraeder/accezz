@@ -20,7 +20,14 @@ public class DnsAction implements IAction {
 		JSONObject responseDetails = execute(command);
 		saveResultsToDatabase(command, responseDetails);
 		saveResultsToFile(command, responseDetails);
-		System.out.println("Done processing: " + line);
+		logProccessing("Done processing: ", line);
+	}
+
+	private void logProccessing(String msg, String line) {
+		if (AccezzConsts.COMMAND_FILE_COMPLETED.equals(line)) {
+			return;
+		}
+		System.out.println(msg + line);
 	}
 
 	private JSONObject execute(CommandDetails command) {

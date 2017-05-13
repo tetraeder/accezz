@@ -19,7 +19,7 @@ public class AccezzConsumer implements Callable<String> {
 		while (!AccezzConsts.COMMAND_FILE_COMPLETED.equals(commandQueue.peek())) {
 			try {
 				String command = commandQueue.remove();
-				System.out.println("Proccessing: " + command);
+				logProccessing(command);
 				if (AccezzConsts.COMMAND_FILE_COMPLETED.equals(command)) {
 					commandQueue.add(AccezzConsts.COMMAND_FILE_COMPLETED);
 					break;
@@ -32,6 +32,13 @@ public class AccezzConsumer implements Callable<String> {
 		}
 
 		return AccezzConsts.COMMAND_FILE_COMPLETED;
+	}
+
+	private void logProccessing(String command) {
+		if (AccezzConsts.COMMAND_FILE_COMPLETED.equals(command)) {
+			return;
+		}
+		System.out.println("Proccessing: " + command);
 	}
 
 }

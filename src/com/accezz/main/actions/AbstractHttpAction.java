@@ -38,10 +38,17 @@ public abstract class AbstractHttpAction implements IAction {
 			JSONObject responseDetails = execute(command);
 			saveResultsToDatabase(command, responseDetails);
 			saveResultsToFile(command, responseDetails, previousAction);
-			System.out.println("Done processing: " + line);
+			logProccessing("Done Proccessing: ", line);
 		} catch (SQLException | ParseException e) {
-			System.out.println("Error processing: " + line);
+			logProccessing("Error processing: ", line);
 		}
+	}
+
+	private void logProccessing(String msg, String line) {
+		if (AccezzConsts.COMMAND_FILE_COMPLETED.equals(line)) {
+			return;
+		}
+		System.out.println(msg + line);
 	}
 
 	private boolean validateResults(JSONObject responseDetails, JSONObject previousAction) {
