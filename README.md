@@ -58,9 +58,9 @@ services.json - Service configuration
   
   "syntax" - service command name 
   
-	"latency" - seconds threshold
+  "latency" - seconds threshold
 	
-	"bandwidth" - percentage threshold
+  "bandwidth" - percentage threshold
 	
   
 ## Test Cases
