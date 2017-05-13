@@ -30,16 +30,17 @@ public abstract class AbstractHttpAction implements IAction {
 	}
 
 	@Override
-	public void perform(String text) {
-		CommandDetails command = new CommandDetails(text);
+	public void perform(String line) {
+		CommandDetails command = new CommandDetails(line);
 		try {
 			JSONObject previousAction = DBUtils.selectLatestUrlData(getCommandKey(),
 					command.getParam(AccezzConsts.PARAM_URL));
 			JSONObject responseDetails = execute(command);
 			saveResultsToDatabase(command, responseDetails);
 			saveResultsToFile(command, responseDetails, previousAction);
+			System.out.println("Done processing: " + line);
 		} catch (SQLException | ParseException e) {
-			System.out.println(e.getMessage());
+			System.out.println("Error processing: " + line);
 		}
 	}
 

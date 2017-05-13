@@ -22,8 +22,7 @@ public class AccezzController {
 
 	private void dispatch(Queue<String> queue) {
 		final int threadPoolSize = 10;
-		ExecutorService executorService = Executors
-				.newFixedThreadPool(threadPoolSize);
+		ExecutorService executorService = Executors.newFixedThreadPool(threadPoolSize);
 
 		Collection<Callable<String>> tasks = new ArrayList<>();
 		for (int i = 0; i < threadPoolSize; i++) {
@@ -34,20 +33,17 @@ public class AccezzController {
 			futures = executorService.invokeAll(tasks);
 			waitForTheFuture(futures);
 		} catch (InterruptedException | ExecutionException e) {
-			//TODO log
 			e.printStackTrace();
 		}
 
 		executorService.shutdown();
 	}
 
-	private void waitForTheFuture(List<Future<String>> futures)
-			throws InterruptedException, ExecutionException {
+	private void waitForTheFuture(List<Future<String>> futures) throws InterruptedException, ExecutionException {
 		for (Future<String> future : futures) {
 			try {
-				future.get(2L,TimeUnit.MINUTES);
+				future.get(2L, TimeUnit.MINUTES);
 			} catch (TimeoutException e) {
-				//TODO log
 				e.printStackTrace();
 			}
 		}

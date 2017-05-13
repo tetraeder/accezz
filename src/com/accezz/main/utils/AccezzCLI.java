@@ -25,7 +25,7 @@ public class AccezzCLI {
 
 	// TODO document
 	/**
-	 *
+	 * 
 	 * @param args
 	 */
 	public void execute(String[] args) {
@@ -36,7 +36,6 @@ public class AccezzCLI {
 
 		try {
 			ConfigurationLoader.loadConfigurationFile(handleConfigFileArg(args));
-
 			DBUtils.initDatabase();
 			FileUtils.initLogFile();
 

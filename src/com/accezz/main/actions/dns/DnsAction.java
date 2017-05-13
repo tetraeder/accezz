@@ -15,11 +15,12 @@ import com.accezz.main.utils.DBUtils;
 public class DnsAction implements IAction {
 
 	@Override
-	public void perform(String text) {
-		CommandDetails command = new CommandDetails(text);
+	public void perform(String line) {
+		CommandDetails command = new CommandDetails(line);
 		JSONObject responseDetails = execute(command);
 		saveResultsToDatabase(command, responseDetails);
 		saveResultsToFile(command, responseDetails);
+		System.out.println("Done processing: " + line);
 	}
 
 	private JSONObject execute(CommandDetails command) {

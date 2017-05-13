@@ -9,16 +9,17 @@ import com.accezz.main.consts.AccezzConsts;
 
 public class AccezzConsumer implements Callable<String> {
 	Queue<String> commandQueue;
-	
+
 	public AccezzConsumer(Queue<String> commandQueue) {
 		this.commandQueue = commandQueue;
 	}
-	
+
 	@Override
 	public String call() throws Exception {
 		while (!AccezzConsts.COMMAND_FILE_COMPLETED.equals(commandQueue.peek())) {
-			try {			
+			try {
 				String command = commandQueue.remove();
+				System.out.println("Proccessing: " + command);
 				if (AccezzConsts.COMMAND_FILE_COMPLETED.equals(command)) {
 					commandQueue.add(AccezzConsts.COMMAND_FILE_COMPLETED);
 					break;
@@ -29,7 +30,7 @@ public class AccezzConsumer implements Callable<String> {
 				// The queue is empty, don't care
 			}
 		}
-		
+
 		return AccezzConsts.COMMAND_FILE_COMPLETED;
 	}
 
