@@ -2,12 +2,12 @@
 
 ## Run Syntax:
 
-  #### accezz.jar =Command File= =Configuration File=
+  ####  accezz.jar =Command File= =Configuration File=
   example: accezz.jar C:\Devhome\Accezz\oneEach.txt c:\test\config.json
   
-  #### accezz.jar =Command File=
+  ####  accezz.jar =Command File=
   example: accezz.jar C:\Devhome\Accezz\oneEach.txt'
-    by default 'c:/accezz/config.json' will be selected
+  by default 'c:/accezz/config.json' will be selected
 
   For CLI logging, please run as 'java -jar accezz.jar C:\Devhome\Accezz\oneEach.txt'     
   
