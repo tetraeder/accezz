@@ -28,8 +28,7 @@ public class AccezzControllerTest {
 
 	@Test
 	public void testOneHttpS() {
-		AccezzController accessController = new AccezzController();
-		accessController.request(new File(PATH + "oneHttps.txt"));
+		AccezzCLI.main(new String[] { PATH + "oneHttps.txt" });
 	}
 
 	@Test

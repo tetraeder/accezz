@@ -1,29 +1,46 @@
 package com.accezz.main.utils;
 
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 public class MailUtils {
-//	public static void SendMail() {
-//		final String sendgridApiKey = "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";
-//		final String sendgridSender = "tetraeder";
-//		final String toEmail = "gad.salner@gmail.com";
-//
-//		Email from = new Email("test@example.com");
-//		String subject = "Hello World from the SendGrid Java Library!";
-//		Email to = new Email("test@example.com");
-//		Content content = new Content("text/plain", "Hello, Email!");
-//		Mail mail = new Mail(from, subject, to, content);
-//
-//		SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
-//		Request request = new Request();
-//		try {
-//			request.method = Method.POST;
-//			request.endpoint = "mail/send";
-//			request.body = mail.build();
-//			Response response = sg.api(request);
-//			System.out.println(response.statusCode);
-//			System.out.println(response.body);
-//			System.out.println(response.headers);
-//		} catch (IOException ex) {
-//			throw ex;
-//		}
-//	}
+	public static void sendMail(String msg) {
+		final String username = "accezzserver@gmail.com";
+		final String password = "accezz1234";
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+
+		try {
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("gad.salner@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("gad.salner@gmail.com"));
+			message.setSubject("Accezz Notification");
+			message.setText("Dear Mail Crawler," + "\n\n" + msg);
+
+			Transport.send(message);
+
+			System.out.println("Email sent with message: " + msg);
+
+		} catch (MessagingException e) {
+			System.out.println("Email was not sent");
+		}
+	}
 }

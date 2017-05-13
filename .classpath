@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.8.6.jar"/>
 	<classpathentry kind="lib" path="lib/tinylog-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Devhome/sqlite/mail-1.4.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

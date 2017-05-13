@@ -18,6 +18,7 @@ import org.pmw.tinylog.Logger;
 import com.accezz.main.consts.AccezzConsts;
 import com.accezz.main.utils.ConfigurationLoader;
 import com.accezz.main.utils.DBUtils;
+import com.accezz.main.utils.MailUtils;
 
 public abstract class AbstractHttpAction implements IAction {
 	protected final long LATENCY_THRESHOLD;
@@ -73,9 +74,11 @@ public abstract class AbstractHttpAction implements IAction {
 					+ responseDetails.get(AccezzConsts.ACTION_PARAM_LATENCY) + "ms, Bandwidth: "
 					+ responseDetails.get(AccezzConsts.ACTION_PARAM_BANDWITH) + "MBPs");
 		} else {
-			Logger.error(getName() + " test to " + command.getParam(AccezzConsts.PARAM_URL) + ": FAILURE. Latency: "
+			String msg = getName() + " test to " + command.getParam(AccezzConsts.PARAM_URL) + ": FAILURE. Latency: "
 					+ responseDetails.get(AccezzConsts.ACTION_PARAM_LATENCY) + "ms, Bandwidth: "
-					+ responseDetails.get(AccezzConsts.ACTION_PARAM_BANDWITH) + "BPs");
+					+ responseDetails.get(AccezzConsts.ACTION_PARAM_BANDWITH) + "BPs";
+			Logger.error(msg);
+			MailUtils.sendMail(msg);
 		}
 	}
 
@@ -156,7 +159,7 @@ public abstract class AbstractHttpAction implements IAction {
 		return responseDetails;
 	}
 
-	private String trimPrefixIfNeeded(String url) {
+	protected String trimPrefixIfNeeded(String url) {
 		if (url.indexOf("://") > -1) {
 			url = url.substring(url.indexOf("://") + 3);
 		}

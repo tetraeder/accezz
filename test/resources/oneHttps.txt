@@ -1,1 +1,1 @@
-https -u www.ynet.co.il
+https -u www.bankhapoalim.co.il

@@ -1,1 +1,2 @@
 http -u http://www.ynet.co.il
+http -u www.ynet.co.il
