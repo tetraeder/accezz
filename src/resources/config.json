@@ -2,6 +2,7 @@
 "logFile": "C:/accezz/output.txt",
 "database": "C:/accezz/db/database.db",
 "tempDir": "C:/accezz/",
+"curlDir": "C:/Program Files (x86)/Git/bin/",
 "rolloutAfter" : 10,
  "smtp": { 
         "src": "Images/Sun.png",

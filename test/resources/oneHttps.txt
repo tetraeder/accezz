@@ -1,1 +1,1 @@
-https -u www.bankhapoalim.co.il
+https -u https://www.bankhapoalim.co.il

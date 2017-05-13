@@ -21,9 +21,10 @@ public class ConfigurationLoader {
 	private static String logPath;
 	private static String tempDir;
 	private static long rolloutAfter;
+	private static String curlDir;
 
 	/**
-	 *
+	 * 
 	 * @param file
 	 *            configuration file
 	 * @throws FileNotFoundException
@@ -31,7 +32,7 @@ public class ConfigurationLoader {
 	 * @throws IOException
 	 *             Exception while reading the file, parsing it, or while
 	 *             reading/parsing services configuration
-	 *
+	 * 
 	 * @throws ParseException
 	 *             Exception while parsing the file, parsing it, or while
 	 *             parsing services configuration
@@ -46,6 +47,7 @@ public class ConfigurationLoader {
 			tempDir = ((String) jsonObject.get("tempDir"));
 			logPath = ((String) jsonObject.get("logFile"));
 			rolloutAfter = ((long) jsonObject.get("rolloutAfter"));
+			curlDir = ((String) jsonObject.get("curlDir"));
 			handleDirectories();
 			String servicesFile = (String) jsonObject.get("servicesFile");
 
@@ -83,14 +85,14 @@ public class ConfigurationLoader {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param file
 	 *            service configuration file
 	 * @throws FileNotFoundException
 	 *             if configuration file doesn't exist
 	 * @throws IOException
 	 *             Exception while reading/parsing the file
-	 *
+	 * 
 	 * @throws ParseException
 	 *             Exception while parsing the file/parsing it
 	 */
@@ -135,5 +137,9 @@ public class ConfigurationLoader {
 
 	public static void main(String[] args) {
 		handleDirectories();
+	}
+
+	public static String getCurlDir() {
+		return curlDir;
 	}
 }

@@ -3,7 +3,7 @@
         "name": "http",
         "id": 1,
         "syntax": "http"
-		"latency": 10,
+		"latency": 10000,
 		"bandwidth": 10
     },
 	{ 
@@ -11,7 +11,7 @@
         "name": "https",
         "id": 2,
         "syntax": "https"
-		"latency": 10,
+		"latency": 10000,
 		"bandwidth": 10
 		
     },

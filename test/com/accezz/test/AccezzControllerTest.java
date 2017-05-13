@@ -14,6 +14,7 @@ public class AccezzControllerTest {
 
 	@Before
 	public void initDB() {
+		//
 	}
 
 	@Test

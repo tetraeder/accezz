@@ -1,15 +1,16 @@
 package com.accezz.main.actions;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.InetAddress;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -62,7 +63,7 @@ public abstract class AbstractHttpAction implements IAction {
 
 		long currentBandwidth = (long) responseDetails.get(AccezzConsts.ACTION_PARAM_BANDWITH);
 		long previousBandwidth = (long) previousAction.get(AccezzConsts.ACTION_PARAM_BANDWITH);
-		boolean isBandwidthValid = (currentBandwidth * ((100 - BANDWIDTH_THRESHOLD) / 100)) < previousBandwidth;
+		boolean isBandwidthValid = (currentBandwidth * ((100 - BANDWIDTH_THRESHOLD) / 100)) <= previousBandwidth;
 
 		return isLatencyValid && isBandwidthValid;
 	}
@@ -147,15 +148,43 @@ public abstract class AbstractHttpAction implements IAction {
 
 	private JSONObject testLatency(String url) {
 		JSONObject responseDetails = new JSONObject();
-		int timeOut = 30000;
-		long s = System.currentTimeMillis();
+
+		ProcessBuilder pb = new ProcessBuilder(ConfigurationLoader.getCurlDir() + "curl.exe", "-s", "-w",
+				"\"%{time_total}\"", "-o", "/dev/null/", url);
+		long currentNano = System.nanoTime();
+		long start = System.currentTimeMillis();
+		String tempFileName = currentNano + ".tmp";
+		String tempFileFullPath = ConfigurationLoader.getTempDir() + tempFileName;
+
+		pb.directory(new File(ConfigurationLoader.getTempDir()));
+		pb.redirectErrorStream(true);
+		Process p;
 		try {
-			url = trimPrefixIfNeeded(url);
-			InetAddress.getByName(url).isReachable(timeOut);
+			p = pb.start();
+
+			InputStream is = p.getInputStream();
+
+			FileOutputStream outputStream = new FileOutputStream(tempFileFullPath);
+			String line;
+			BufferedInputStream bis = new BufferedInputStream(is);
+			byte[] bytes = new byte[100];
+			int numberByteReaded;
+			while ((numberByteReaded = bis.read(bytes, 0, 100)) != -1) {
+
+				outputStream.write(bytes, 0, numberByteReaded);
+				Arrays.fill(bytes, (byte) 0);
+
+			}
+
+			outputStream.flush();
+			outputStream.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			new File(tempFileFullPath).delete();
 		}
-		responseDetails.put(AccezzConsts.ACTION_PARAM_LATENCY, System.currentTimeMillis() - s);
+		responseDetails.put(AccezzConsts.ACTION_PARAM_LATENCY, System.currentTimeMillis() - start);
+
 		return responseDetails;
 	}
 

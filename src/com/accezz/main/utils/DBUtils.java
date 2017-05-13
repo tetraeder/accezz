@@ -1,11 +1,17 @@
 package com.accezz.main.utils;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -89,19 +95,38 @@ public class DBUtils {
 	/**
 	 * @param args
 	 *            the command line arguments
+	 * @throws IOException
 	 */
-	public static void main(String[] args) {
-		// String test = "http://www.ynet.co.il";
-		// String test2 = "http://www.ynet.co.il/gad";
-		try {
-			initDatabase("jdbc:sqlite:" + "C:/accezz/db/test.db");
-			JSONObject data = selectLatestUrlData("dns", "http://www.ynet.co.il");
-			initDatabase("jdbc:sqlite:" + "C:/accezz/db/database.db");
-			// JSONObject json = new JSONObject();
-			// json.put("test", "no");
-			// insertUrlData("dns",json, "http://www.ynet.co.il");
-		} catch (SQLException | ParseException e) {
-			e.printStackTrace();
+	public static void main(String[] args) throws IOException {
+
+		// curl -s -w "%{time_total}\n" -o /dev/null http://server:3000
+		ProcessBuilder pb = new ProcessBuilder("C:/Program Files (x86)/Git/bin/curl.exe", "-s", "-w",
+				"\"%{time_total}\"", "-o", "/dev/null/", "http://www.ynet.co.il");
+
+		// ProcessBuilder pb = new
+		// ProcessBuilder("C:/Program Files (x86)/Git/bin/curl.exe", "-s",
+		// "http://static.tumblr.com/cszmzik/RUTlyrplz/the-simpsons-season-22-episode-13-the-blue-and-the-gray.jpg");
+
+		pb.directory(new File("c:/test/help/"));
+		pb.redirectErrorStream(true);
+		Process p = pb.start();
+		InputStream is = p.getInputStream();
+
+		FileOutputStream outputStream = new FileOutputStream("c:/test/help/temp.tmp");
+		long start = System.currentTimeMillis();
+		String line;
+		BufferedInputStream bis = new BufferedInputStream(is);
+		byte[] bytes = new byte[100];
+		int numberByteReaded;
+		while ((numberByteReaded = bis.read(bytes, 0, 100)) != -1) {
+
+			outputStream.write(bytes, 0, numberByteReaded);
+			Arrays.fill(bytes, (byte) 0);
+
 		}
+
+		System.out.println(System.currentTimeMillis() - start);
+		outputStream.flush();
+		outputStream.close();
 	}
 }

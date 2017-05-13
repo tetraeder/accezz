@@ -1,6 +1,3 @@
 http -u http://www.ynet.co.il
 https -u http://www.ynet.co.il
 dns -u http://www.ynet.co.il
-http -u www.ynet.co.il
-https -u www.ynet.co.il
-dns -u www.ynet.co.il
