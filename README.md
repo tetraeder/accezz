@@ -3,9 +3,11 @@
 ## Run Syntax:
 
   accezz.jar =Command File= =Configuration File=
+  
   	example: accezz.jar C:\Devhome\Accezz\oneEach.txt c:\test\config.json
   
   accezz.jar =Command File=
+  
 	example: accezz.jar C:\Devhome\Accezz\oneEach.txt'
 	by default 'c:/accezz/config.json' will be selected
 
@@ -16,14 +18,21 @@
   C:\accezz\
   
 ## Command Syntax:
+
   http -u http://www.ynet.co.il
+  
+  
   https -u https://www.ynet.co.il
+  
+  
   dns -u http://www.ynet.co.il
   
 ## [Resourcs](Https://github.com/tetraeder/accezz/tree/master/src/resources):
 
 accezz.jar -Runnable jar
+
 config.json
+
 services.json
 
 ## Configuration: 
