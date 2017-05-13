@@ -1,0 +1,25 @@
+{"services": [{
+        "serviceUrl": "httpCheck",
+        "name": "http",
+        "id": 1,
+        "syntax": "http"
+		"latency": 10,
+		"bandwidth": 10
+    },
+	{ 
+        "serviceUrl": "httpsCheck",
+        "name": "https",
+        "id": 2,
+        "syntax": "https"
+		"latency": 10,
+		"bandwidth": 10
+		
+    },
+	{
+        "serviceUrl": "dnsCheck",
+        "name": "dns",
+        "id": 3,
+        "syntax": "dns"
+    }
+]
+}    

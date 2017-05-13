@@ -1,0 +1,12 @@
+{"servicesFile": "C:/accezz/services.json",
+"logFile": "C:/accezz/output.txt",
+"database": "C:/accezz/db/database.db",
+"tempDir": "C:/accezz/",
+"rolloutAfter" : 10,
+ "smtp": { 
+        "src": "Images/Sun.png",
+        "name": "sun1",
+        "hOffset": 250,
+        "vOffset": 250,
+        "alignment": "center"
+    }}    
