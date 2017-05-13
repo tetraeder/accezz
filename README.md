@@ -60,9 +60,9 @@ services.json - Service configuration
   
   "syntax" - service command name 
   
-  "latency" - seconds threshold
+  "latency" - ms threshold (example: 10000)
 	
-  "bandwidth" - percentage threshold
+  "bandwidth" - degregation percentage threshold (example: 10%)
 	
   
 ## Test Cases
