@@ -31,28 +31,40 @@
 
 accezz.jar -Runnable jar
 
-config.json
+config.json - Program configuration
 
-services.json
+services.json - Service configuration
 
 ## Configuration: 
 
 config.json - 
   "servicesFile" - services file location 
+  
   "logFile" - log file location
+  
   "database" - db file location
+  
   "rolloutAfter" - log rollout to next file after X commands
+  
   "smtp" - mail configuration
   
-services.json - 
+services.json - for each command: 
+
   "serviceUrl" - future usage for micro services
+  
   "name" - service name
+  
   "syntax" - service command name 
+  
 	"latency" - seconds threshold
+	
 	"bandwidth" - percentage threshold
+	
   
 ## Test Cases
+
   [Basic test cases and command files](https://github.com/tetraeder/accezz/tree/master/test)
+  
   
 ## Not Completed:
   * Relative paths
