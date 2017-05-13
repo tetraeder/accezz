@@ -13,7 +13,7 @@ Configuration:
   
 Resources:
 
-under https://github.com/tetraeder/accezz/tree/master/src/resources:
+under [Resourcs](Https://github.com/tetraeder/accezz/tree/master/src/resources)
 
 Runnable jar. For CLI logging, please run as 'java -jar accezz.jar C:\Devhome\Accezz\oneEach.txt'
 
