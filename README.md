@@ -69,8 +69,8 @@ services.json - Service configuration
   
   
 ## Not Completed:
-  * Relative paths
-  * Email
-  * Proper logging
-  * Elaborate testing
-  * Full documentation
+  * Relative paths 
+  * Email (Started to implement via mailtrap/sendgrid, didn't complete)
+  * Internal Log to file (currently prints to console)
+  * Elaborate testing (currently performing scripted tests withut assertion)
+  * Full documentation (Code not fully covered)
